@@ -1,9 +1,30 @@
 #include "llama.hh"
 
+#include <SDL2/SDL.h>
+
 #include <iostream>
+
+#include <unordered_map>
+
+struct test
+{
+	std::unordered_map<int, int> testing;
+};
 
 int main()
 {
+
+#if 0
+	test * testptr = (test *) malloc(sizeof(test));
+
+	// accessing testing is giving error
+
+	testptr->testing.clear();
+
+	return 0 ;
+
+#else 
+
 	llama_engine_init();
 
 	WindowHandler window = llama_create_window("Test window", 800, 600);
@@ -14,8 +35,18 @@ int main()
 	llama_clear_window(window);
 	llama_update_window(window);
 
-	std::cin.get();
+	KeyboardHandler keyboardHandler = llama_get_keyboard();
+
+	while(llama_exit_requested()  == false && llama_key_pressed(keyboardHandler, SDL_SCANCODE_ESCAPE)  == false )
+	{
+		if(llama_key_pressed(keyboardHandler, SDL_SCANCODE_A)){std::cout << "A key pressed!\n";}
+		else if(llama_key_pressed(keyboardHandler, SDL_SCANCODE_B)){std::cout << "B key pressed\n";}
+
+		llama_event_update();
+	}
 
 	llama_engine_quit();
 	return 0;
+
+#endif 
 }

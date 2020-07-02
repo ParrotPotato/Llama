@@ -16,10 +16,10 @@ release: CPPFLAGS += -O3
 release: $(OBJ_DIR)/llama.out
 
 $(OBJ_DIR)/llama.out: $(OBJ_FILES)
-	g++ -o $@ $^ $(CPPFLAGS) $(LIBS)
+	g++ $(CPPFLAGS) -o $@ $^ $(LIBS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cc
-	g++ -c -o $@ $^ $(CPPFLAGS) $(LIBS)
+	g++ $(CPPFLAGS) -c -o $@ $^ $(LIBS)
 
 clean:
 	rm $(OBJ_DIR)/*.o $(OBJ_DIR)/*.out 2> /dev/null
