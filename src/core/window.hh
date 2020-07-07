@@ -1,7 +1,7 @@
 #ifndef LLAMA_WINDOW_HH
 #define LLAMA_WINDOW_HH
 
-#include "type.hh"
+#include <type.hh>
 
 #include <SDL2/SDL.h>
 

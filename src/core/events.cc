@@ -1,13 +1,11 @@
 #include "events.hh"
 
-#include "type.hh"
+#include <type.hh>
 #include "keyboard.hh"
 
 #include <SDL2/SDL.h> 
 
 #include <vector>
-#include <iostream> 
-
 #include <cassert>
 
 KeyboardState * keyboard = nullptr;

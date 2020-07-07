@@ -15,6 +15,5 @@ typedef uint8_t uint8;
 
 typedef float real32;
 typedef double real64;
-typedef long double real128;
 
-#endif
+#endif 

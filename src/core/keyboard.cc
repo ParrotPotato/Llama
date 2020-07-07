@@ -1,7 +1,5 @@
 #include "keyboard.hh"
 
-#include <iostream>
-
 bool llama_key_down(void * keyboardptr, int32 keycode)
 {
 	KeyboardState * keystate = (KeyboardState *) keyboardptr;

@@ -1,4 +1,4 @@
-#include "llama.hh"
+#include <llama.hh>
 
 #include <SDL2/SDL.h>
 
@@ -6,28 +6,11 @@
 
 #include <unordered_map>
 
-struct test
-{
-	std::unordered_map<int, int> testing;
-};
-
 int main()
 {
-
-#if 0
-	test * testptr = (test *) malloc(sizeof(test));
-
-	// accessing testing is giving error
-
-	testptr->testing.clear();
-
-	return 0 ;
-
-#else 
-
 	llama_engine_init();
 
-	WindowHandler window = llama_create_window("Test window", 800, 600);
+	WindowHandler window = llama_create_window("Llama", 800, 600);
 
 	llama_set_clear_color(window, 0.18f, 0.32f, 0.93f, 1.0f);
 	llama_set_depth(window, 1.0f);
@@ -47,6 +30,4 @@ int main()
 
 	llama_engine_quit();
 	return 0;
-
-#endif 
 }

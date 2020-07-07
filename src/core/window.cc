@@ -22,7 +22,7 @@ Window * llama_create_window(const char * buffer, int32 width, int32 height)
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClearDepth(1.0f);
-	
+
 	winptr->width = width;
 	winptr->height= height;
 

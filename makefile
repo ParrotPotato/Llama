@@ -1,28 +1,37 @@
-CC := g++ 
-INCLUDE := -D_REENTRANT -I/usr/include/SDL2 
-LIBS := -lSDL2 -lGLEW -lGLU -lGL
+cc := g++
+libs := -lSDL2 -lGLEW -lGLU -lGL
 
-CPPFLAGS := --std=c++11
+cpp_flags := --std=c++11
 
-SRC_DIR := ./src
-OBJ_DIR := ./bin
-SRC_FILES := $(wildcard $(SRC_DIR)/*.cc)
-OBJ_FILES := $(patsubst $(SRC_DIR)/%.cc, $(OBJ_DIR)/%.o, $(SRC_FILES))
+src_dir := ./src
+obj_dir := ./bin
+src_files := $(wildcard $(src_dir)/*.cc)
 
-debug: CPPFLAGS += -g
-debug: $(OBJ_DIR)/llama.out
+bin_dir := $(shell cd ./bin && pwd)
+header_dir := $(shell cd ./header && pwd)
 
-release: CPPFLAGS += -O3
-release: $(OBJ_DIR)/llama.out
+debug: build_type = debug
+debug: cpp_flags += -g
+debug: build
 
-$(OBJ_DIR)/llama.out: $(OBJ_FILES)
-	g++ $(CPPFLAGS) -o $@ $^ $(LIBS)
+release: build_type = release
+release: cpp_flags += -O3
+release: build
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cc
-	g++ $(CPPFLAGS) -c -o $@ $^ $(LIBS)
+build: core main
+build: $(obj_dir)/llama.out
+
+main:
+	@make $(build_type) --directory="./src" bin_dir=$(bin_dir) header_dir=$(header_dir)
+
+core: 
+	@make $(build_type) --directory="./src/core" bin_dir=$(bin_dir) header_dir=$(header_dir)
+
+$(obj_dir)/llama.out:
+	@$(cc) $(cpp_flags) -o $@ $(bin_dir)/*.o $(libs)
 
 clean:
-	rm $(OBJ_DIR)/*.o $(OBJ_DIR)/*.out 2> /dev/null
+	@rm $(obj_dir)/*.o $(obj_dir)/*.out 2> /dev/null
 
-run: 
+run:
 	./bin/llama.out
