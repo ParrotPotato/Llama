@@ -22,7 +22,7 @@ int main()
 
 	while(llama_exit_requested()  == false && llama_key_pressed(keyboardHandler, SDL_SCANCODE_ESCAPE)  == false )
 	{
-		if(llama_key_pressed(keyboardHandler, SDL_SCANCODE_A)){std::cout << "A key pressed!\n";}
+		if(llama_key_pressed(keyboardHandler, SDL_SCANCODE_A)){std::cout << "A key pressed\n";}
 		else if(llama_key_pressed(keyboardHandler, SDL_SCANCODE_B)){std::cout << "B key pressed\n";}
 
 		llama_event_update();
