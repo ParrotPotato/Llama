@@ -14,7 +14,7 @@ struct Window
 	int32 height;
 };
 
-Window * llama_create_window(const char * buffer, int32 width, int32 height);
+Window * llama_get_window_handler(const char * buffer = nullptr, int32 width = 0, int32 height = 0);
 
 void llama_update_window(Window * winptr);
 void llama_clear_window(Window * winptr);

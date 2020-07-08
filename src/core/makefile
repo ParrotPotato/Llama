@@ -17,4 +17,4 @@ release: cpp_flags += -O3
 release: $(obj_files)
 
 $(obj_dir)/%.o: $(src_dir)/%.cc
-	@$(cc) $(cpp_flags) -c -o $@ $^ $(libs) -I$(header_dir)
+	$(cc) $(cpp_flags) -c -o $@ $^ $(libs) -I$(header_dir)

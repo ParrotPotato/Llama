@@ -11,7 +11,7 @@
 KeyboardState * keyboard = nullptr;
 bool exit_requested = false;
 
-void * llama_get_keyboard(void)
+void * llama_get_keyboard_handler(void)
 {
 	if(!keyboard)
 	{

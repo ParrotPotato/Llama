@@ -4,8 +4,12 @@
 
 #include <cassert>
 
-Window * llama_create_window(const char * buffer, int32 width, int32 height)
+Window * g_window = nullptr;
+
+Window * llama_get_window_handler(const char * buffer, int32 width, int32 height)
 {
+	if(g_window) return g_window;
+
 	Window * winptr = (Window *) malloc(sizeof(Window));
 	assert(winptr);
 
@@ -26,7 +30,9 @@ Window * llama_create_window(const char * buffer, int32 width, int32 height)
 	winptr->width = width;
 	winptr->height= height;
 
-	return winptr;
+	g_window = winptr;
+
+	return g_window;
 }
 
 void llama_update_window(void * winptr)
