@@ -1,4 +1,4 @@
-#include <llama.hh>
+#include <llama/llama.hh>
 
 #include <SDL2/SDL.h>
 

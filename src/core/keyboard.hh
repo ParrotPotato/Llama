@@ -1,7 +1,7 @@
 #ifndef LLAMA_KEYBOARD_HH
 #define LLAMA_KEYBOARD_HH
 
-#include <type.hh>
+#include <llama/type.hh>
 
 struct KeyboardState
 {

@@ -1,7 +1,7 @@
 #include "events.hh"
-
-#include <type.hh>
 #include "keyboard.hh"
+
+#include <llama/type.hh>
 
 #include <SDL2/SDL.h> 
 

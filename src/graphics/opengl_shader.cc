@@ -1,6 +1,6 @@
 #include "opengl_shader.hh"
 
-#include <type.hh>
+#include <llama/type.hh>
 
 #include <GL/glew.h>
 
