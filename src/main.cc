@@ -6,6 +6,7 @@
 
 #include <unordered_map>
 
+
 int main()
 {
 	llama_engine_init();
@@ -23,7 +24,10 @@ int main()
 	OpenglShaderHandler shader_handler = llama_load_shader_program(
 			"shaders/basic_vertex_shader.glsl",
 			"shaders/basic_fragment_shader.glsl");
-	
+
+	MeshHandler mesh_handler = llama_load_mesh("models/cube.obj");
+
+	llama_unload_mesh(mesh_handler);
 
 	while(llama_exit_requested()  == false && llama_key_pressed(keyboard_handler, SDL_SCANCODE_ESCAPE)  == false )
 	{
@@ -34,7 +38,6 @@ int main()
 	}
 
 	llama_unload_shader_program(shader_handler);
-	
 
 	llama_engine_quit();
 	return 0;

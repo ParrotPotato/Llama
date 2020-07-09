@@ -1,6 +1,7 @@
 #include "opengl_shader.hh"
 
 #include <llama/type.hh>
+#include <llama/resource_loader.hh>
 
 #include <GL/glew.h>
 
@@ -74,8 +75,8 @@ GLuint compile_shader(char * shader_source, GLenum type)
 
 void * llama_load_shader_program(char * vertex_shader_source, char * fragment_shader_source)
 {
-	char * vertex_shader_source_buffer   = load_shader_source_buffer(vertex_shader_source);
-	char * fragment_shader_source_buffer = load_shader_source_buffer(fragment_shader_source);
+	char * vertex_shader_source_buffer   = llama_load_file_buffer(vertex_shader_source);
+	char * fragment_shader_source_buffer = llama_load_file_buffer(fragment_shader_source);
 
 	if(vertex_shader_source_buffer == nullptr || fragment_shader_source_buffer == nullptr) 
 	{
