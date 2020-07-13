@@ -47,5 +47,10 @@ typedef void * MeshHandler;
 extern MeshHandler llama_load_mesh(char * filename);
 extern void llama_unload_mesh(MeshHandler meshptr);
 
+// Immediate Renderer 
+extern void llama_imm_renderer_entity(void * entity);
+extern void llama_imm_renderer_mesh(MeshHandler  mesh);
+
+
 
 #endif
