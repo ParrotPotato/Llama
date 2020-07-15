@@ -8,7 +8,7 @@ obj_dir := ./bin
 bin_dir := $(shell cd ./bin && pwd)
 header_dir := $(shell cd ./header && pwd)
 
-central_headers := ./src/utils/resource_loader.hh ./src/utils/parser.hh
+central_headers := ./src/utils/resource_loader.hh ./src/utils/parser.hh ./src/utils/logger.hh
 
 output := ./bin/llama.out
 

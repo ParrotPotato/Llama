@@ -1,11 +1,11 @@
 #include <llama/llama.hh>
+#include <llama/logger.hh>
 
 #include <SDL2/SDL.h>
 
 #include <iostream>
 
 #include <unordered_map>
-
 
 int main()
 {
@@ -32,9 +32,7 @@ int main()
 		llama_clear_window(window);
 
 		llama_use_shader_program(shader_handler);
-
 		llama_imm_renderer_mesh(mesh_handler);
-
 		llama_unuse_shader_program();
 
 		if(llama_key_pressed(keyboard_handler, SDL_SCANCODE_A)){std::cout << "A key pressed\n";}
