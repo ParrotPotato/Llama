@@ -31,7 +31,11 @@ int main()
 	{
 		llama_clear_window(window);
 
+		llama_use_shader_program(shader_handler);
+
 		llama_imm_renderer_mesh(mesh_handler);
+
+		llama_unuse_shader_program();
 
 		if(llama_key_pressed(keyboard_handler, SDL_SCANCODE_A)){std::cout << "A key pressed\n";}
 		else if(llama_key_pressed(keyboard_handler, SDL_SCANCODE_B)){std::cout << "B key pressed\n";}

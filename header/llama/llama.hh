@@ -41,6 +41,9 @@ typedef void * OpenglShaderHandler;
 extern OpenglShaderHandler llama_load_shader_program(char * vertex_shader_source, char * fragment_shader_source);
 extern void llama_unload_shader_program(OpenglShaderHandler opengl_shader_handler);
 
+extern void llama_use_shader_program(OpenglShaderHandler opengl_shader_handler);
+extern void llama_unuse_shader_program(void);
+
 // Mesh data
 typedef void * MeshHandler;
 

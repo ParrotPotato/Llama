@@ -15,4 +15,8 @@ void * llama_load_shader_program(char * vertex_shader_source, char * fragment_sh
 
 void llama_unload_shader_program(void * shaderptr);
 
+void llama_use_shader_program(void * shaderptr);
+
+void llama_unuse_shader_program(void);
+
 #endif

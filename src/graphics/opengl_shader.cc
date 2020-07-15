@@ -179,3 +179,18 @@ void llama_unload_shader_program(void * shaderptr)
 
 	glDeleteProgram(shader->program);
 }
+
+void llama_use_shader_program(void * shaderptr)
+{
+	Opengl_Shader * shader = (Opengl_Shader *) shaderptr;
+
+	// checking if valid shader 
+	if(shader == nullptr || shader->program == 0) return;
+
+	glUseProgram(shader->program);
+}
+
+void llama_unuse_shader_program(void)
+{
+	glUseProgram(0);
+}

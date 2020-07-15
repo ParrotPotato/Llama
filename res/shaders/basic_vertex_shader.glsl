@@ -15,7 +15,10 @@ uniform mat4 transformation;
 
 void main()
 {
+/*
 	gl_Position = transformation * position;
 	fragmentcolor = color;
 	textureuv = texturecord;
+*/
+	gl_Position = position;
 }
