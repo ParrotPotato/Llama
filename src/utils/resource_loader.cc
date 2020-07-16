@@ -4,6 +4,7 @@
 #include <llama/logger.hh>
 
 #include <cstdio>
+#include <cstdlib>
 
 char * llama_load_file_buffer(char * filename)
 {
