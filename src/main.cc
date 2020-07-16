@@ -3,8 +3,6 @@
 
 #include <SDL2/SDL.h>
 
-#include <iostream>
-
 #include <unordered_map>
 
 int main()
@@ -35,8 +33,8 @@ int main()
 		llama_imm_renderer_mesh(mesh_handler);
 		llama_unuse_shader_program();
 
-		if(llama_key_pressed(keyboard_handler, SDL_SCANCODE_A)){std::cout << "A key pressed\n";}
-		else if(llama_key_pressed(keyboard_handler, SDL_SCANCODE_B)){std::cout << "B key pressed\n";}
+		if(llama_key_pressed(keyboard_handler, SDL_SCANCODE_A)){llama_console("Keyboard", "A key pressed\n");}
+		else if(llama_key_pressed(keyboard_handler, SDL_SCANCODE_B)){llama_console("Keyboard", "B key pressed\n");}
 
 		llama_event_update();
 

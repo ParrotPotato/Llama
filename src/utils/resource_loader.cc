@@ -1,10 +1,9 @@
 #include "resource_loader.hh"
 
 #include <llama/type.hh>
+#include <llama/logger.hh>
 
-#include <cstdio> 
-
-#include <iostream> // @Fixme : not to be used for logging 
+#include <cstdio>
 
 char * llama_load_file_buffer(char * filename)
 {
@@ -13,12 +12,9 @@ char * llama_load_file_buffer(char * filename)
 	if(filename == nullptr) return nullptr;
 
 	FILE * fp = fopen(filename, "r");
-	if(fp == nullptr) 
+	if(fp == nullptr)
 	{
-		// @Fixme: Use logger instead of iostream for logging 
-		// internal engine errors
-
-		std::cout << "Unable to open shader file " << filename << "\n";
+		llama_console("resource loader", "Unable to open file for loading resource (%s)\n", filename);
 		perror("");
 		return nullptr;
 	}

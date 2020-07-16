@@ -12,6 +12,8 @@ central_headers := ./src/utils/resource_loader.hh ./src/utils/parser.hh ./src/ut
 
 output := ./bin/llama.out
 
+driver := 1
+
 debug: build_type = debug
 debug: cpp_flags += -g
 debug: build
@@ -19,6 +21,8 @@ debug: build
 release: build_type = release
 release: cpp_flags += -O3
 release: build
+
+
 
 build: createheader core graphics utils main 
 	$(cc) $(cpp_flags) -o $(output) $(bin_dir)/*.o $(libs)
@@ -47,7 +51,7 @@ clean:
 	rm $(obj_dir)/*.o $(obj_dir)/*.out 2> /dev/null
 
 run:
-	cd ./res && DRI_PRIME=1 $(bin_dir)/llama.out
+	cd ./res && DRI_PRIME=$(driver) $(bin_dir)/llama.out
 
 gdb:
-	cd ./res && DRI_PRIME=1 gdb $(bin_dir)/llama.out
+	cd ./res && DRI_PRIME=$(driver) gdb $(bin_dir)/llama.out

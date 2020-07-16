@@ -6,24 +6,13 @@
 
 #include <GL/glew.h>
 
-// @Fixme : do not use iostream for writing logs to buffer
-#include <iostream>
-
 void llama_imm_renderer_entity(void * entity)
 {
-	// renders a generic entity which have mesh as an 
-	// data member 
-	
-//	std::cout << "renderer_entity : not implemented yet - returning without error \n";
-
 	return;
 }
 
 void llama_imm_renderer_mesh(void * meshptr)
 {
-//	std::cout << "renderer_mesh : currently rendering only positions \n";
-// 	std::cout << "renderer_mesh : colors / textures and uvs are diabled\n";
-
 	Mesh * mesh = (Mesh *) meshptr;
 
 	glBegin(GL_TRIANGLES);

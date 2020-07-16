@@ -2,45 +2,13 @@
 
 #include <llama/type.hh>
 #include <llama/resource_loader.hh>
+#include <llama/logger.hh>
 
 #include <GL/glew.h>
 
 #include <cstdlib>
 #include <cstdio>
 
-
-// @Temperory: Use logger for displaying the shader logs and other 
-// buffer messages
-#include <iostream>
-
-char * load_shader_source_buffer(char * shader_source)
-{
-	char * source = nullptr;
-
-	FILE * fp = fopen(shader_source, "r");
-	if(fp == nullptr) 
-	{
-		// @Fixme: Use logger instead of iostream for logging 
-		// internal engine errors
-
-		std::cout << "Unable to open shader file " << shader_source << "\n";
-		perror("");
-		return source;
-	}
-
-	fseek(fp, 0L, SEEK_END);
-	int64 size = ftell(fp);
-	fseek(fp, 0L, SEEK_SET);
-
-	source = (char *) malloc(size + 2);
-	uint64 readsize = fread(source, sizeof(char), size, fp);
-
-	fclose(fp);
-
-	source[readsize] = '\0';
-
-	return source;
-}
 
 GLuint compile_shader(char * shader_source, GLenum type)
 {
@@ -59,11 +27,7 @@ GLuint compile_shader(char * shader_source, GLenum type)
 		char * log_buffer = (char *) alloca(log_size * sizeof(char));
 		glGetShaderInfoLog(shader, log_size, nullptr, log_buffer); 
 
-		// @Fixme: Use logger instead of iostream for logging 
-		// internal engine errors
-
-		std::cout << "Error occured while compiling shader \n";
-		std::cout << log_buffer << "\n";
+		llama_console("compile shader", warn, "Error occured while compiling shader\n %s\n", log_buffer);
 
 		glDeleteShader(shader);
 		return 0;
@@ -80,7 +44,7 @@ void * llama_load_shader_program(char * vertex_shader_source, char * fragment_sh
 
 	if(vertex_shader_source_buffer == nullptr || fragment_shader_source_buffer == nullptr) 
 	{
-		std::cout << "Unable to source buffer \n";
+		llama_console("load shader program", "Unable to source buffer\n");
 		return nullptr;
 	}
 
@@ -89,11 +53,7 @@ void * llama_load_shader_program(char * vertex_shader_source, char * fragment_sh
 
 	if(vertex_shader == 0 || fragment_shader_source == 0)
 	{
-		// @Fixme: Use logger instead of iostream for logging 
-		// internal engine errors
-
-		std::cout << "Error occured while parsing one of the shaders\n";
-
+		llama_console("load shader program", "Error occured while parsing one of the shaders\n");
 		return nullptr;
 	}
 
@@ -116,11 +76,7 @@ void * llama_load_shader_program(char * vertex_shader_source, char * fragment_sh
 			char * log_buffer = (char *) alloca(log_size * sizeof(char));
 			glGetProgramInfoLog(program, log_size, nullptr, log_buffer);
 
-			// @Fixme: Use logger instead of iostream for logging 
-			// internal engine errors
-
-			std::cout << "Error occure while linking shaders \n";
-			std::cout << log_buffer << "\n";
+			llama_console("linking shader", "Error occured while linking shaders\n%s\n", log_buffer);
 
 			return nullptr;
 		}
@@ -140,11 +96,7 @@ void * llama_load_shader_program(char * vertex_shader_source, char * fragment_sh
 			char * log_buffer = (char *) alloca(log_size * sizeof(char));
 			glGetProgramInfoLog(program, log_size, nullptr, log_buffer);
 
-			// @Fixme: Use logger instead of iostream for logging 
-			// internal engine errors
-
-			std::cout << "Error found while validating shaders \n";
-			std::cout << log_buffer << "\n";
+			llama_console("validate program", "Error found while validating program\n%s\n", log_buffer);
 
 			return nullptr;
 		}

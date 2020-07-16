@@ -9,8 +9,6 @@
 #include <vector>
 #include <unordered_map>
 
-#include <iostream>
-
 struct indexed_vertex_representation
 {
 	uint32 v, n, uv;
@@ -120,12 +118,10 @@ void * llama_load_mesh(char * filename)
 					arr[j] = std::stoi(line);
 				}
 
-//				std::cout << "  faceinformation : " <<  arr[0] << " " << arr[1] << " " << arr[2] << "\n";
 
 				ifr.vertices[i] = {arr[0], arr[1], arr[2]};
 	
 			}
-//			std::cout << " " << ifr << "\n";
 
 			faces.push_back(ifr);
 		}
@@ -133,13 +129,10 @@ void * llama_load_mesh(char * filename)
 
 	llama_unload_file_buffer(ptr);
 
-//	std::cout << "buffer pointer unloaded \n";
 	// creating a index array for mesh
 	
 	
 	std::unordered_map<indexed_vertex_representation, uint32, ivr_hash_functor> vertex_index_pair;
-
-//	std::cout << "iterating over every face \n";
 
 	uint32 counter = 0;
 
@@ -160,13 +153,11 @@ void * llama_load_mesh(char * filename)
 			}
 			else 
 			{
-//				std::cout << "  it->second " << it->second << "\n";
 				index_data.push_back(it->second);
 			}
 		}
 	}
 
-//	std::cout << "vertex index pairs found (size : " << vertex_index_pair.size() << ") \n"; 
 
 
 	// creating vertices array
