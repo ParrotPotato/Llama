@@ -6,7 +6,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-char * llama_load_file_buffer(char * filename)
+char * llama_load_file_buffer(char * filename, Resource_Flag flag)
 {
 	char * buffer = nullptr;
 

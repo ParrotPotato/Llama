@@ -32,9 +32,15 @@ int main()
 		llama_use_shader_program(shader_handler);
 		llama_imm_renderer_mesh(mesh_handler);
 		llama_unuse_shader_program();
+		
+		// Testing keybaord input 
 
-		if(llama_key_pressed(keyboard_handler, SDL_SCANCODE_A)){llama_console("Keyboard", "A key pressed\n");}
-		else if(llama_key_pressed(keyboard_handler, SDL_SCANCODE_B)){llama_console("Keyboard", "B key pressed\n");}
+		if(llama_key_pressed(keyboard_handler, SDL_SCANCODE_A))
+			llama_console("Keyboard", "A key pressed\n");
+		else if(llama_key_pressed(keyboard_handler, SDL_SCANCODE_B))
+			llama_console("Keyboard", "B key pressed\n");
+
+		// updating key down state
 
 		llama_event_update();
 
@@ -46,5 +52,6 @@ int main()
 	llama_unload_shader_program(shader_handler);
 
 	llama_engine_quit();
+
 	return 0;
 }

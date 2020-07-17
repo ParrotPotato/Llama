@@ -3,6 +3,8 @@
 
 #include "type.hh"
 
+#include <GL/glew.h>
+
 // Exposing all the structures just as void pointers
 // so as to not expose internal structures to outer
 // implementations
@@ -53,8 +55,5 @@ extern void llama_unload_mesh(MeshHandler meshptr);
 // Immediate Renderer 
 extern void llama_imm_renderer_entity(void * entity);
 extern void llama_imm_renderer_mesh(MeshHandler  mesh);
-
-
-
 
 #endif
