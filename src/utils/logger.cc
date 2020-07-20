@@ -55,7 +55,7 @@ int32 internal_printf(const char * title, Type type, const char * formatstring, 
 }
 
 
-void llama_console_enable_color(bool state)
+void llama_console_show_color(bool state)
 {
 	color_enabled = state;
 }

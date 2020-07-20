@@ -49,6 +49,8 @@ std::ostream & operator<<(std::ostream & stream, const intermediate_face_represe
 	return stream;
 }
 
+// loading things from a obj file for rendering 3rd party
+
 void * llama_load_mesh(char * filename)
 {
 	char * ptr = llama_load_file_buffer(filename);

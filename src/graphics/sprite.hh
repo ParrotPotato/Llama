@@ -1,14 +1,16 @@
 #ifndef LLAMA_SPRITE_HH 
 #define LLAMA_SPRITE_HH
 
+#include "mesh.hh"
+
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
+#include <string>
+
 struct Sprite
 {
-    glm::vec2 position;
-    glm::vec3 color[4];
-    glm::vec2 dim;
+	Mesh mesh;
 
     GLuint texture_id;
 };

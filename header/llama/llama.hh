@@ -4,6 +4,7 @@
 #include "type.hh"
 
 #include <GL/glew.h>
+#include <glm/glm.hpp>
 
 // Exposing all the structures just as void pointers
 // so as to not expose internal structures to outer
@@ -52,8 +53,16 @@ typedef void * MeshHandler;
 extern MeshHandler llama_load_mesh(char * filename);
 extern void llama_unload_mesh(MeshHandler meshptr);
 
+// Sprite 
+typedef void * SpriteHandler;
+
+extern SpriteHandler llama_sprite_load(char * texture_source, glm::vec2 position, glm::vec2 dim);
+extern void llama_sprite_unload(SpriteHandler spriteptr);
+
 // Immediate Renderer 
 extern void llama_imm_renderer_entity(void * entity);
 extern void llama_imm_renderer_mesh(MeshHandler  mesh);
+extern void llama_imm_render_sprite(SpriteHandler sprite);
+
 
 #endif

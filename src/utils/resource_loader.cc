@@ -24,6 +24,8 @@ char * llama_load_file_buffer(char * filename, Resource_Flag flag)
 	int64 size = ftell(fp);
 	fseek(fp, 0L, SEEK_SET);
 
+	llama_console("Load file", "Read %lu bytes from file %s\n", size, filename);
+
 	buffer = (char *) malloc(size + 2);
 	uint64 readsize = fread(buffer, sizeof(char), size, fp);
 

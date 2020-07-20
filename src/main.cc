@@ -17,6 +17,8 @@ int main()
 	llama_clear_window(window);
 	llama_update_window(window);
 
+	llama_console_show_color(true);
+
 	KeyboardHandler keyboard_handler = llama_get_keyboard_handler();
 
 	OpenglShaderHandler shader_handler = llama_load_shader_program(
@@ -25,13 +27,15 @@ int main()
 
 	MeshHandler mesh_handler = llama_load_mesh("models/cube.obj");
 
+	SpriteHandler sprite_handler = llama_sprite_load("texture/wall.jpg", glm::vec2(0.0f, 0.0f), glm::vec2(1.0f, 1.0f));
+
+
 	while(llama_exit_requested()  == false && llama_key_pressed(keyboard_handler, SDL_SCANCODE_ESCAPE)  == false )
 	{
 		llama_clear_window(window);
 
-		llama_use_shader_program(shader_handler);
 		llama_imm_renderer_mesh(mesh_handler);
-		llama_unuse_shader_program();
+		llama_imm_render_sprite(sprite_handler);
 		
 		// Testing keybaord input 
 
