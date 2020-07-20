@@ -1,0 +1,17 @@
+------------------------------
+Current
+------------------------------
+New functionality for handling for 2D game
+
+[ ] Camera (orthogonal and projection) in immediate rendering mode
+[ ] Transformation in immediate rendering mode
+[ ] Adds functionality for loading .a libs (font rendering for handling output)
+[ ] Removing the dummy header (llama.hh) and make direct includes for handling functionality
+
+------------------------------
+Later 
+------------------------------
+
+[ ] Configuration loading from file -- (implementing this first time, will take more time then expected)
+[ ] Moving from immedite more to a vbo more of rendering in OpenGL
+[ ] Checking networking with 2 player authentication for handling output

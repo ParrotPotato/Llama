@@ -1,0 +1,10 @@
+Idea : 
+
+The idea is not fleshed out yet but it moves somewhere around the fact that there are 2 players (or more) 
+are there playing against each other, they have these agents (one or more, not thought anything about that) 
+who are have some task (maybe something like capture the flag, or something simple like KILL THE ENEMY) but 
+the twist here is that they don't control these agents directly, they are controlled by the code which the 
+player writes before the round begins, after all the rounds are done (there are fixed number of them) the 
+one with higher score wins. May be there are pickups, and powerups and other things. May be there are land
+features which are needed to be dealt with.
+
