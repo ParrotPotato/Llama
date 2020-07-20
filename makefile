@@ -12,7 +12,7 @@ central_headers := ./src/utils/resource_loader.hh ./src/utils/parser.hh ./src/ut
 
 output := ./bin/llama.out
 
-driver := 1
+driver := 0
 
 debug: build_type = debug
 debug: cpp_flags += -g
