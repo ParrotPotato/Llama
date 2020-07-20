@@ -24,6 +24,7 @@ GLuint llama_load_texture_2d(char * filename, Texture_Load_Flag flag)
 
         int32 width, height, nrchannel;
 
+		stbi_set_flip_vertically_on_load(true);
         unsigned char * buffer = stbi_load(texture_source.c_str(), &width, &height, &nrchannel, 0);
 
         if(buffer == nullptr)
