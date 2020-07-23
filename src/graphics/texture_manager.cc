@@ -13,6 +13,7 @@
 #include <string>
 
 std::unordered_map<std::string, GLuint> texture_lookup_table;
+std::unordered_map<GLuint, uint64> texture_id_ref_counter;
 
 GLuint llama_load_texture_2d(char * filename, Texture_Load_Flag flag)
 {
@@ -51,18 +52,31 @@ GLuint llama_load_texture_2d(char * filename, Texture_Load_Flag flag)
 		stbi_image_free(buffer);
 
 		texture_lookup_table[texture_source] = texture_id;
+		texture_id_ref_counter[texture_id] = 0;
 	}
+
+	texture_id_ref_counter[texture_lookup_table[texture_source]] += 1;
 
     return texture_lookup_table[texture_source];
 }
 
 void llama_unload_texture_2d(char * filename)
 {
-    if(texture_lookup_table.find(std::string(filename)) == texture_lookup_table.end()) return;
-    glDeleteTextures(GL_TEXTURE_2D, &texture_lookup_table[filename]);
+	std::string texture_source(filename);
+    if(texture_lookup_table.find(texture_source) == texture_lookup_table.end()) return;
+
+	GLuint texture_id = texture_lookup_table[texture_source];
+
+	texture_id_ref_counter[texture_id] -= 1;
+
+	if(texture_id_ref_counter[texture_id] == 0)
+    	glDeleteTextures(1, &texture_id);
 }
 
 void llama_unload_texture_2d(GLuint texture_id)
 {
-    glDeleteTextures(GL_TEXTURE_2D, &texture_id);
+	texture_id_ref_counter[texture_id] -= 1;
+
+	if(texture_id_ref_counter[texture_id] == 0)
+    	glDeleteTextures(1, &texture_id);
 }
