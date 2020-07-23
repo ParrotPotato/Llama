@@ -6,6 +6,7 @@
 #include <cstdio>
 
 bool color_enabled = false;
+bool debug_enabled = false;
 
 const char * clear_color = "\033[0m";
 
@@ -43,6 +44,8 @@ int32 internal_printf(const char * title, Type type, const char * formatstring, 
 {
 	int32 ret = 0;
 
+	if(type == debug && !debug_enabled) return ret;
+
 	const char * color = "";
 	if(color_enabled) 
 		color = color_lookup(type);
@@ -58,6 +61,11 @@ int32 internal_printf(const char * title, Type type, const char * formatstring, 
 void llama_console_show_color(bool state)
 {
 	color_enabled = state;
+}
+
+void llama_console_set_debug(bool state)
+{
+	debug_enabled = state;
 }
 
 bool llama_console_is_color_enable(void)

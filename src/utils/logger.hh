@@ -19,6 +19,6 @@ int32 llama_console(const char * title, const char * formatstring, ...);
 int32 llama_console(const char * formatstring, ...);
 
 void llama_console_show_color(bool state);
-
+void llama_console_set_debug(bool state);
 
 #endif
