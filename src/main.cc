@@ -27,7 +27,8 @@ int main()
 
 	MeshHandler mesh_handler = llama_load_mesh("models/cube.obj");
 
-	SpriteHandler sprite_handler = llama_sprite_load("texture/wall.jpg", glm::vec2(0.0f, 0.0f), glm::vec2(1.0f, 1.0f));
+	SpriteHandler sprite_handler1 = llama_sprite_load("texture/wall.jpg", glm::vec2(0.0f, 0.0f), glm::vec2(1.0f, 1.0f));
+	SpriteHandler sprite_handler2 = llama_sprite_load("texture/wall.jpg", glm::vec2(-0.75f, 0.0f), glm::vec2(0.5f, 0.5f));
 
 
 	while(llama_exit_requested()  == false && llama_key_pressed(keyboard_handler, SDL_SCANCODE_ESCAPE)  == false )
@@ -35,7 +36,8 @@ int main()
 		llama_clear_window(window);
 
 		llama_imm_renderer_mesh(mesh_handler);
-		llama_imm_render_sprite(sprite_handler);
+		llama_imm_render_sprite(sprite_handler1);
+		llama_imm_render_sprite(sprite_handler2);
 		
 		// Testing keybaord input 
 
