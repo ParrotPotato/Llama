@@ -22,7 +22,7 @@ void llama_imm_render_sprite(void * spriteptr)
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, sprite->texture_id);
 
-	llama_imm_renderer_mesh((void *)&sprite->mesh);
+	llama_imm_renderer_mesh((void *)sprite->mesh);
 
 	glDisable(GL_TEXTURE_2D);
 

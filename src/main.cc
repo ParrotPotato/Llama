@@ -18,6 +18,7 @@ int main()
 	llama_update_window(window);
 
 	llama_console_show_color(true);
+	llama_console_set_debug(false);
 
 	KeyboardHandler keyboard_handler = llama_get_keyboard_handler();
 
@@ -52,6 +53,10 @@ int main()
 
 		llama_update_window(window);
 	}
+
+	llama_sprite_unload(sprite_handler1);
+	llama_sprite_unload(sprite_handler2);
+	
 
 	llama_unload_mesh(mesh_handler);
 

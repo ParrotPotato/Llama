@@ -18,16 +18,18 @@ void * llama_sprite_load(char * filename, glm::vec2 position, glm::vec2 dim)
 
     sprite->texture_id = llama_load_texture_2d(filename);
 
-	sprite->mesh.vertices = new Vertex[4];
-	sprite->mesh.indices  = new uint32[4];
+	sprite->mesh = new Mesh;
 
-	sprite->mesh.vertex_count = 4;
-	sprite->mesh.index_count = 6;
+	sprite->mesh->vertices = new Vertex[4];
+	sprite->mesh->indices  = new uint32[4];
+
+	sprite->mesh->vertex_count = 4;
+	sprite->mesh->index_count = 6;
 
 	{ // initialising vertices and indices for mesh for a sprite
 
-		Vertex * vertice = sprite->mesh.vertices;
-		uint32 * indices = sprite->mesh.indices;
+		Vertex * vertice = sprite->mesh->vertices;
+		uint32 * indices = sprite->mesh->indices;
 
 		vertice[0].pos = glm::vec3(position.x - dim.x / 2.0f, position.y - dim.y / 2.0f, 0.0f);
 		vertice[0].colors = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -68,6 +70,11 @@ void llama_sprite_unload(void * spriteptr)
 
     Sprite * sprite = (Sprite* ) spriteptr;
     llama_unload_texture_2d(sprite->texture_id);
+	
+	// this deletes the mesh buffer but is not deleting the vertices and indexes that 
+	// were allocated while creating this sprite
+	
+	llama_unload_mesh((void *)sprite->mesh);
 
     free(sprite);
 }
